@@ -1,16 +1,16 @@
-import './Todo.css'
+import React from "react";
+import "./Todo.css";
 
-function Todo({ title, paragraph }) {
-    console.log(title)
-    return (
-        <div className="todo">
-            <h2>{ title }</h2>
-            <p>{paragraph}</p>
-            <button onClick={() => {
-                console.log('clicked')
-            }}>Delete</button>
-         </div>
-    );
-}r
+export default function Todo({ title, onTodoDelete }) {
+  function deleteTodo() {
+    console.log("deleteTodo()", title.toUpperCase());
+    onTodoDelete?.(title); 
+  }
 
-export default Todo;
+  return (
+    <div className="todo">
+      <p>{title}</p>
+      <button type="button" onClick={deleteTodo}>Delete</button>
+    </div>
+  );
+}
